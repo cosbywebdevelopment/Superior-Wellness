@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', function (){
+    return view('dashboard.index');
+})->name('dashboard.index');
+
+Route::get('/business-contacts', [ContactsController::class, 'index'])->name('contacts.index');
