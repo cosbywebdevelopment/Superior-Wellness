@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Contacts;
 use App\Http\Requests\StoreContactsRequest;
 use App\Http\Requests\UpdateContactsRequest;
+use App\Models\contacts\Contacts;
 
 class ContactsController extends Controller
 {
@@ -13,7 +13,8 @@ class ContactsController extends Controller
      */
     public function index()
     {
-        return view('contacts.index');
+        $contacts = Contacts::all();
+        return view('contacts.index', compact('contacts'));
     }
 
     /**
@@ -37,7 +38,8 @@ class ContactsController extends Controller
      */
     public function show(Contacts $contacts)
     {
-        //
+        $addresses = $contacts->addresses;
+        return view('contacts.show', compact('contacts', 'addresses'));
     }
 
     /**
@@ -45,7 +47,8 @@ class ContactsController extends Controller
      */
     public function edit(Contacts $contacts)
     {
-        //
+        $addresses = $contacts->addresses;
+        return view('contacts.edit', compact('contacts', 'addresses'));
     }
 
     /**
@@ -53,7 +56,7 @@ class ContactsController extends Controller
      */
     public function update(UpdateContactsRequest $request, Contacts $contacts)
     {
-        //
+        dd($contacts);
     }
 
     /**

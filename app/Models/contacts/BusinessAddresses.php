@@ -1,11 +1,14 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\contacts;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Contacts extends Model
+class BusinessAddresses extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        ];
 }
