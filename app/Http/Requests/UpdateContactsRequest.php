@@ -22,7 +22,7 @@ class UpdateContactsRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'contact_name' => 'required|max:150|min:2',
         ];
     }
 }

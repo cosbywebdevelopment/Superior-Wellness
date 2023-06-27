@@ -19,8 +19,8 @@ return new class extends Migration
             $table->foreign('contacts_id')->references('id')->on('contacts');
             $table->text('address')->nullable();
 
-            $table->tinyInteger('billing');
-            $table->tinyInteger('shipping')->unique();
+            $table->tinyInteger('billing')->default('0');
+            $table->tinyInteger('shipping')->default('0');
             $table->timestamps();
         });
     }

@@ -15,23 +15,41 @@
                 </p>
                 <p class="card-text">Business Addresses.</p>
                     @foreach($addresses as $address)
-                     <textarea type="text" cols="40" rows="4" name="contacts.address">
+                     <textarea type="text" cols="40" rows="4" name="address[{{ $address->id }}]">
                         {{ $address->address }}
                     </textarea>
-                            <span class="fw-bold">{{ $address->address }}</span>
+{{--                            <span class="fw-bold">{{ $address->address }}</span>--}}
                         <br>
                             <span class="">
                                     Billing Address:
-                                    <input name="contacts.billing" type="checkbox" @if($address->billing) checked @endif></span>
+                                @if($address->billing)
+                                    <input type="hidden" name="billing[{{ $address->id }}]" value="0">
+                                    <input name="billing[{{ $address->id }}]" type="checkbox" checked value="1">
+
+                                @else
+                                    <input type="hidden" name="billing[{{ $address->id }}]" value="0">
+                                    <input name="billing[{{ $address->id }}]" type="checkbox" value="1">
+
+                                @endif
                             </span>
                             <span class="">
                                     Shipping Address:
-                                    <input name="contacts.shipping" type="checkbox" @if($address->shipping) checked @endif>
+                                    @if($address->shipping)
+                                    <input type="hidden" name="shipping[{{ $address->id }}]" value="0">
+                                    <input name="shipping[{{ $address->id }}]" type="checkbox" checked value="1">
+
+                                @else
+                                    <input type="hidden" name="shipping[{{ $address->id }}]" value="0">
+                                    <input name="shipping[{{ $address->id }}]" type="checkbox" value="1">
+
+                                @endif
                             </span>
                         <br>
                         <br>
                     @endforeach
-
+                @error('contact_name')
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
                 <button class="btn btn-primary" type="submit">Save Changes</button>
             </div>
         </div>

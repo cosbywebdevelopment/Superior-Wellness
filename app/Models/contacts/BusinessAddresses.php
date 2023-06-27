@@ -10,5 +10,8 @@ class BusinessAddresses extends Model
     use HasFactory;
 
     protected $fillable = [
+        'address',
+        'billing',
+        'shipping'
         ];
 }
