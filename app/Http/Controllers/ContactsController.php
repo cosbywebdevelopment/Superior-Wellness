@@ -23,17 +23,21 @@ class ContactsController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Contacts $contacts)
     {
-        //
+        $addresses = $contacts->addresses;
+        return view('contacts.create', compact('contacts','addresses'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreContactsRequest $request)
+    public function store(StoreContactsRequest $request, Contacts $contacts)
     {
-        //
+        $request->validated();
+        // If validation is successful persist to the DB
+        $contacts->addresses()->create($request->all());
+        return redirect()->route('contacts.show', ['contacts' => $contacts])->with('status', 'All saved!');
     }
 
     /**

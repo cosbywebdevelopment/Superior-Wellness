@@ -18,7 +18,6 @@
                      <textarea type="text" cols="40" rows="4" name="address[{{ $address->id }}]">
                         {{ $address->address }}
                     </textarea>
-{{--                            <span class="fw-bold">{{ $address->address }}</span>--}}
                         <br>
                             <span class="">
                                     Billing Address:

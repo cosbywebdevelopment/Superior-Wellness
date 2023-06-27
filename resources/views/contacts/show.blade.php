@@ -28,7 +28,11 @@
                     <br>
                 @endforeach
 
-            <a href="{{route('contacts.edit',$contacts->id)}}" class="btn btn-warning">Edit Business</a>
+            <div class="text-center">
+                <a href="{{route('contacts.edit',$contacts->id)}}" class="btn btn-warning">Edit Business</a>
+                <a href="{{route('contacts.create',$contacts->id)}}" class="btn btn-primary">Add Address</a>
+            </div>
+
         </div>
     </div>
 @endsection
