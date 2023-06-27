@@ -65,17 +65,25 @@ class ContactsController extends Controller
         $contacts->update($request->all());
         $addresses = $contacts->addresses()->get();
         $ids = $addresses->pluck('id');
-
+        $count = 0;
         foreach ($ids as $value) {
             $data = [
                 'address'=>$request->address[$value],
                 'billing'=>$request->billing[$value],
                 'shipping'=>$request->shipping[$value],
             ];
+            // see if they're more than one shipping address
+            if($request->shipping[$value] === "1")
+            {
+                $count ++;
+                if($count > 1){
+                    return redirect()->back()->with('addresses', 'Only one address is aloud for shipping!');
+                }
+            }
             BusinessAddresses::where('id',$value)
                 ->update($data);
         }
-
+        return redirect()->route('contacts.show', ['contacts' => $contacts])->with('status', 'All saved!');
     }
 
     /**

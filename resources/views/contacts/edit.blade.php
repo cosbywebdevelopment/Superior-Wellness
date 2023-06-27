@@ -37,11 +37,9 @@
                                     @if($address->shipping)
                                     <input type="hidden" name="shipping[{{ $address->id }}]" value="0">
                                     <input name="shipping[{{ $address->id }}]" type="checkbox" checked value="1">
-
                                 @else
                                     <input type="hidden" name="shipping[{{ $address->id }}]" value="0">
                                     <input name="shipping[{{ $address->id }}]" type="checkbox" value="1">
-
                                 @endif
                             </span>
                         <br>
@@ -50,6 +48,11 @@
                 @error('contact_name')
                 <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
+                @if (session('addresses'))
+                    <div class="alert alert-danger">
+                        {{ session('addresses') }}
+                    </div>
+                @endif
                 <button class="btn btn-primary" type="submit">Save Changes</button>
             </div>
         </div>

@@ -3,8 +3,13 @@
 
 
 @section('content')
-
-
+    <div class="container">
+        @if (session('status'))
+            <div class="alert alert-success">
+                {{ session('status') }}
+            </div>
+        @endif
+    </div>
     <div class="card" style="width: 22rem;">
         <div class="card-body">
             <h5 class="card-title">{{ $contacts->business_name }}</h5>
@@ -26,6 +31,5 @@
             <a href="{{route('contacts.edit',$contacts->id)}}" class="btn btn-warning">Edit Business</a>
         </div>
     </div>
-
 @endsection
 
