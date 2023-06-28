@@ -14,7 +14,7 @@
                     <input name="contact_name" type="text" class="" value="{{ $contacts->contact_name }}" disabled>
                 </p>
                 <p class="card-text">Business Addresses.</p>
-                     <textarea type="text" cols="40" rows="4" name="address" required></textarea>
+                     <textarea id="validate_address" class="" type="text" cols="40" rows="4" name="address" required></textarea>
                         <br>
                             <span class="">
                                     Billing Address:
@@ -34,5 +34,28 @@
             </div>
         </div>
     </form>
+
 @endsection
 
+<script>
+    // google api places
+    function initAutocomplete() {
+        autoPickup = new google.maps.places.Autocomplete(
+            document.getElementById('validate_address'),
+            {
+                types: ['address'],
+                componentRestrictions: {'country': ['uk']},
+                fields: ['place_id', 'geometry', 'address_components']
+            });
+        // autoDropOff = new google.maps.places.Autocomplete(
+        //     document.getElementById('geoDropOff'),
+        //     {
+        //         types: ['address'],
+        //         componentRestrictions: {'country': ['uk']},
+        //         fields: ['place_id', 'geometry', 'address_components']
+        //     });
+        // store geo data
+        //autoPickup.addListener('place_changed', onPlacePickup);
+        //autoDropOff.addListener('place_changed', onPlaceDropOff);
+    }
+</script>
