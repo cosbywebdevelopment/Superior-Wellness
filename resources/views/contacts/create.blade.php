@@ -11,10 +11,10 @@
             <div class="card-body">
                 <h5 class="card-title">{{ $contacts->business_name }}</h5>
                 <p class="card-text">Contact Name.
-                    <input name="contact_name" type="text" class="" value="{{ $contacts->contact_name }}" disabled>
+                    <input name="contact_name" class="" value="{{ $contacts->contact_name }}" disabled>
                 </p>
                 <p class="card-text">Business Addresses.</p>
-                     <textarea id="validate_address" class="" type="text" cols="40" rows="4" name="address" required></textarea>
+                     <input id="validate_address" size="35" name="address" required>
                         <br>
                             <span class="">
                                     Billing Address:
@@ -36,26 +36,24 @@
     </form>
 
 @endsection
+@push('foot')
+    <script>
+        // google api places
+        function initAutocomplete() {
+            autoPickup = new google.maps.places.Autocomplete(
+                document.getElementById('validate_address'),
+                {
+                    types: ['address'],
+                    componentRestrictions: {'country': ['uk']},
+                    fields: ['place_id', 'geometry', 'address_components']
+                });
+        }
+    </script>
 
-<script>
-    // google api places
-    function initAutocomplete() {
-        autoPickup = new google.maps.places.Autocomplete(
-            document.getElementById('validate_address'),
-            {
-                types: ['address'],
-                componentRestrictions: {'country': ['uk']},
-                fields: ['place_id', 'geometry', 'address_components']
-            });
-        // autoDropOff = new google.maps.places.Autocomplete(
-        //     document.getElementById('geoDropOff'),
-        //     {
-        //         types: ['address'],
-        //         componentRestrictions: {'country': ['uk']},
-        //         fields: ['place_id', 'geometry', 'address_components']
-        //     });
-        // store geo data
-        //autoPickup.addListener('place_changed', onPlacePickup);
-        //autoDropOff.addListener('place_changed', onPlaceDropOff);
-    }
-</script>
+    <script async
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4mEYVHOQHayGVyJpsfciUzZiR5QMxbgQ&libraries=places&callback=initAutocomplete">
+    </script>
+@endpush
+
+
+
