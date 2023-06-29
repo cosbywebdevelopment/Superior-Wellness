@@ -4,20 +4,34 @@
 
 @section('content')
 
+    <div class="mb-3">
+        <div class="d-inline-flex col-md-6 col-form-label">
+            <label for="exampleInputEmail1" class="form-label d-flex align-items-end pe-2" style="min-width: 200px !important">{{ $first->business_name }}</label>
+            <input class="form-control" id="waypoint1" value="{{ $first->addresses->first()->address }}" size="35" disabled>
+        </div>
+    </div>
+    <div class="mb-3">
+        <div class="d-inline-flex col-md-6 col-form-label">
+            <label for="exampleInputEmail1" class="form-label d-flex align-items-end pe-2" style="min-width: 200px !important">{{ $second->business_name }}</label>
+            <input class="form-control" id="waypoint2" value="{{ $second->addresses->first()->address }}" size="35" disabled>
+        </div>
+    </div>
+    <div class="mb-3">
+        <div class="d-inline-flex col-md-6 col-form-label">
+            <label for="exampleInputEmail1" class="form-label d-flex align-items-end pe-2" style="min-width: 200px !important">{{ $third->business_name }}</label>
+            <input class="form-control" id="waypoint3" value="{{ $third->addresses->first()->address }}" size="35" disabled>
+        </div>
+    </div>
+
     <input id="start" value="Broombank Park, Chesterfield, UK" size="35" disabled hidden>
-    <p>{{ $first->business_name }}: <input id="waypoint1" value="{{ $first->addresses->first()->address }}" size="35" disabled></p>
-    <p>{{ $second->business_name }}: <input id="waypoint2" value="{{ $second->addresses->first()->address }}" size="35" disabled></p>
-    <p>{{ $third->business_name }}: <input id="waypoint3" value="{{ $third->addresses->first()->address }}" size="35" disabled></p>
     <input id="end" value="Broombank Park, Chesterfield, UK" size="35" disabled hidden>
 
     <div id="container">
-        <div id="google_map"></div>
         <div class="pb-3">
-            <input type="submit" id="submit" class="btn btn-primary"value="Get Planned Route"/>
+            <input type="submit" id="submit" class="btn btn-primary" value="Get Planned Route"/>
         </div>
         <div id="directions-panel"></div>
     </div>
-
 
 @endsection
 @push('foot')
@@ -26,12 +40,7 @@
         function initMap() {
             const directionsService = new google.maps.DirectionsService();
             const directionsRenderer = new google.maps.DirectionsRenderer();
-            const map = new google.maps.Map(document.getElementById("google_map"), {
-                zoom: 6,
-                center: { lat: 41.85, lng: -87.65 },
-            });
 
-            directionsRenderer.setMap(map);
             document.getElementById("submit").addEventListener("click", () => {
                 calculateAndDisplayRoute(directionsService, directionsRenderer);
             });
@@ -102,6 +111,5 @@
     </script>
     <script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4mEYVHOQHayGVyJpsfciUzZiR5QMxbgQ&callback=initMap"
-
     ></script>
 @endpush
