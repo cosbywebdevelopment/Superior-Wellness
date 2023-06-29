@@ -68,13 +68,16 @@
                     const summaryPanel = document.getElementById("directions-panel");
 
                     summaryPanel.innerHTML = "";
-                    let total_duration =0;
+                    let total_duration = 0;
                     let time;
+                    let meters = 0;
+                    let miles;
                     // For each route, display summary information.
                     for (let i = 0; i < route.legs.length; i++) {
                         const routeSegment = i + 1;
                         total_duration += route.legs[i].duration.value
                         time = (new Date(total_duration * 1000)).toUTCString().match(/(\d\d:\d\d:\d\d)/)[0];
+                        meters += route.legs[i].distance.value;
                         summaryPanel.innerHTML +=
                             "<b>Route Segment: " + routeSegment + "</b><br>";
                         summaryPanel.innerHTML += route.legs[i].start_address + " to ";
@@ -87,7 +90,10 @@
                         }
                         summaryPanel.innerHTML += "<br><br>";
                     }
-                    summaryPanel.innerHTML += 'TOTAL DURATION: ' + '<strong>' + time + '</strong>' + "<br><br><br>";
+                    // meters to miles conversion
+                    miles = meters * 0.0006213712
+                    summaryPanel.innerHTML += 'TOTAL DURATION: ' + '<strong>' + time + '</strong>' + "<br>";
+                    summaryPanel.innerHTML += 'TOTAL MILES: ' + '<strong>' + miles.toFixed(1) + '</strong>' + "<br><br><br>";
                 })
                 .catch((e) => window.alert("Directions request failed due to " + e));
         }
