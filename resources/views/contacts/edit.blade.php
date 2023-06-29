@@ -74,7 +74,7 @@
         }
     </script>
     <script async
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4mEYVHOQHayGVyJpsfciUzZiR5QMxbgQ&libraries=places&callback=initAutocomplete">
+            src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_API') }}&libraries=places&callback=initAutocomplete">
     </script>
 @endpush
 
