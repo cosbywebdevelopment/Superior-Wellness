@@ -15,6 +15,8 @@
         }
 
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js" ></script>
+    <script src="https://polyfill.io/v3/polyfill.js?features=default"></script>
 </head>
 <body>
 
@@ -50,9 +52,9 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link disabled" href="#">
+                        <a class="nav-link {{ Route::is('deliveries.index') ? 'fw-bold' : '' }}" href="{{ route('deliveries.index') }}">
                             <span data-feather="file" class="align-text-bottom"></span>
-                            Orders
+                            Deliveries
                         </a>
                     </li>
                     <li class="nav-item ">
@@ -136,9 +138,7 @@
         </main>
     </div>
 </div>
-<script src="/docs/5.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-
-<script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script><script src="dashboard.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.0/js/bootstrap.min.js"></script>
 @stack('foot')
 </body>
 </html>
