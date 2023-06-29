@@ -17,8 +17,6 @@
                     @foreach($addresses as $index => $address)
                      <input id="validate{{ $index }}" value="{{ $address->address }}" class="validate_address form-control"
                             size="35" name="address[{{ $address->id }}]">
-
-
                         <br>
                             <span class="">
                                     Billing Address:
@@ -44,9 +42,6 @@
                             </span>
                         <br>
                         <br>
-
-
-
                     @endforeach
                 @error('contact_name')
                 <div class="alert alert-danger">{{ $message }}</div>
@@ -82,11 +77,4 @@
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4mEYVHOQHayGVyJpsfciUzZiR5QMxbgQ&libraries=places&callback=initAutocomplete">
     </script>
 @endpush
-
-
-
-
-
-
-</script>
 
