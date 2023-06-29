@@ -81,7 +81,7 @@ class ContactsController extends Controller
             {
                 $count ++;
                 if($count > 1){
-                    return redirect()->back()->with('addresses', 'Only one address is aloud for shipping!');
+                    return redirect()->back()->with('addresses', 'Only one address is allowed for shipping!');
                 }
             }
             BusinessAddresses::where('id',$value)
