@@ -76,7 +76,7 @@ class ContactsController extends Controller
                 'billing'=>$request->billing[$value],
                 'shipping'=>$request->shipping[$value],
             ];
-            // see if they're more than one shipping address
+            // see if there is more than one shipping address
             if($request->shipping[$value] === "1")
             {
                 $count ++;
