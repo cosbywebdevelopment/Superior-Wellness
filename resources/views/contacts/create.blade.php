@@ -11,10 +11,10 @@
             <div class="card-body">
                 <h5 class="card-title">{{ $contacts->business_name }}</h5>
                 <p class="card-text">Contact Name.
-                    <input name="contact_name" class="" value="{{ $contacts->contact_name }}" disabled>
+                    <input name="contact_name" class="form-control" value="{{ $contacts->contact_name }}" disabled>
                 </p>
                 <p class="card-text">Business Addresses.</p>
-                     <input id="validate_address" size="35" name="address" required>
+                     <input class="form-control" id="validate_address" size="35" name="address" required>
                         <br>
                             <span class="">
                                     Billing Address:

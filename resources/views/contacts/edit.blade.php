@@ -11,11 +11,11 @@
             <div class="card-body">
                 <h5 class="card-title">{{ $contacts->business_name }}</h5>
                 <p class="card-text">Contact Name.
-                    <input name="contact_name" type="text" class="" value="{{ $contacts->contact_name }}">
+                    <input name="contact_name" type="text" class="form-control" value="{{ $contacts->contact_name }}">
                 </p>
                 <p class="card-text">Business Addresses.</p>
                     @foreach($addresses as $index => $address)
-                     <input id="validate{{ $index }}" value="{{ $address->address }}" class="validate_address"
+                     <input id="validate{{ $index }}" value="{{ $address->address }}" class="validate_address form-control"
                             size="35" name="address[{{ $address->id }}]">
 
 
